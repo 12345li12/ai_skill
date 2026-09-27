@@ -1,0 +1,24 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+
+# pytest
+.pytest_cache/
+pytest-cache-files-*/
+# ⚠️ 必须是 `.pytest-tmp/*`（**不是** `.pytest-tmp/`）：若父目录被整体排除，git ⛔ 无法再放行
+#    其下文件（"cannot re-include a file if a parent directory of that file is excluded"）
+#    ⇒ 下面的例外会**静默失效**。实测证据见 README `§285`。
+.pytest-tmp/*
+# 例外：冻结 registry 是**冻结证明**（baseline 身份 + hash 记录），⛔ 不是 pytest 临时产物
+# ⇒ 必须随仓库走（`B3 = 乙`：保留原路径 + gitignore 放行，最小改动）。
+!.pytest-tmp/cb_frozen.txt
+
+# 环境
+.venv/
+venv/
+
+# Host demo 运行产物（⛔ 不入版本控制：报告可重新生成）
+host_demo/output/

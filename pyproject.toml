@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "adaptive-agent-router"
+version = "0.1.0"
+description = "自然语言需求规格 → Core Router 规则 → 平台 Adapter 的自适应调度核心"
+readme = "README.md"
+requires-python = ">=3.10"
+#: `RelPkg` Q11：**zero runtime third-party dependency** —— 这是**设计状态**，不是遗漏。
+#: （实测：`src/` 的顶层 import 全部来自标准库；见 `README.md`「依赖」一节。）
+dependencies = []
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+addopts = "-q -p no:cacheprovider"

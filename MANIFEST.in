@@ -1,0 +1,19 @@
+# `RelPkg` —— sdist 内容**最小化**（`Q3` 裁定：规格 / 开发 / 审计资产不进发行物）
+#
+# ⚠️ 本文件是**防御性 + 自证性**措施：无论 setuptools 默认是否已排除，
+#    `release/sdist_check.py` 都**独立断言结果**（⛔ 不靠"写了 prune 所以一定没带"）。
+#
+# ⚠️ 这些 `prune` 只影响 **sdist**；wheel 的内容由 `packages.find where=["src"]` 决定，
+#    并由 `release/wheel_check.py` 独立断言。
+
+prune tests
+prune docs
+prune original-skill
+prune adapters
+prune config
+prune release
+prune .pytest-tmp
+
+global-exclude *.py[cod]
+global-exclude __pycache__/*
+global-exclude *.egg-info/*
